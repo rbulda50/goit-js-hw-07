@@ -33,7 +33,8 @@ function onCreateGalleryCards(images) {
 
 const showFullImage = basicLightbox.create(
     `<img src="">`, {
-        onClose: window.addEventListener('keydown', onEscCloseFullImage),
+        onShow: (instance) => {window.addEventListener('keydown', onEscCloseFullImage)},
+        onClose: (instance) => {window.removeEventListener('keydown', onEscCloseFullImage)},
     });
 
 // showFullImage.show(() => console.log('lightbox'));
